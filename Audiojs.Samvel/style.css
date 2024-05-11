@@ -41,7 +41,7 @@ body {
     width: 100%;
     background-image: url("https://c8.alamy.com/comp/JHWAND/background-of-digital-music-player-with-ear-phones-lying-on-the-wooden-JHWAND.jpg");
     background-size: cover;
-    background-position-y: 40%;
+    background-position-y: 13%;
 }
 
 .songTitle {
@@ -53,6 +53,7 @@ body {
     color: #FFFFFF;
     background-color: rgba(72, 69, 75, 0.8);
     transition: background-color 0.3s ease-in-out;
+
 }
 
 .songTitle:hover {
