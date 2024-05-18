@@ -8,39 +8,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main" id="main">
-
-    </div>
+    <div class="main" id="main"></div>
     
     <div class="player">
-        <div class="row1">
-
-        </div>
-        <div class="songTitle">
-            
+        <div class="row1"></div>
+        <div class="songInfo">
+            <div class="songTitle"></div>
+            <p class="singer"></p>
         </div>
         <div class="row2">
             <div class="play">
-                <img src="Photos/previous.png" id="pre" onclick=" playPrevious()" alt="">
+                <img src="Photos/previous.png" id="pre" onclick="prev()" alt="">
                 <img src="Photos/play-button-arrowhead.png" id="play" onclick="playOrPause()" alt="">
-                <img src="Photos/next.png" id="next" onclick="playNext()" alt="">
+                <img src="Photos/next.png" id="next" onclick="next()" alt="">
             </div>
             <div class="seek-bar">
                 <div class="handle">
-                    <div class="fill">
-
-                    </div>
+                    <div class="fill"></div>
                 </div>
             </div>
             <div class="mute">
-                <div class="currentTime">00: 00 / 00 : 00</div>
+                <div class="currentTime">00:00 / 00:00</div>
                 <div class="muteButtons">
-                    <img src="Photos/volume-down.png" id="decrease" alt="">
-                    <img src="Photos/volume.png" id="mute" alt="">
-                    <img src="Photos/increase-volume.png" id="increase" alt="">
+                    <img src="Photos/volume-down.png" id="decrease" onclick="decrease()" alt="">
+                    <img src="Photos/volume.png" id="mute" onclick="mute()" alt="">
+                    <img src="Photos/increase-volume.png" id="increase" onclick="increase()" alt="">
                 </div>
             </div>
-
         </div>
     </div>
 

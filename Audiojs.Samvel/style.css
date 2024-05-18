@@ -1,84 +1,113 @@
-/* CSS styles with animations */
-
-html,
-body {
+/* Resetting default styles and ensuring full width and height */
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #FFFFFF; /* White text */
 }
 
+/* Main container background */
 .main {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     height: 100%;
     width: 100%;
-    background-image: url("https://c8.alamy.com/comp/JHWAND/background-of-digital-music-player-with-ear-phones-lying-on-the-wooden-JHWAND.jpg");
     background-size: cover;
-    filter: blur(8px) grayscale(0.5);
-    background-position-y: 50%;
-    background-position-x: 50%;
+    background-position: center;
+    filter: blur(10px) brightness(0.5); /* Enhanced blur and darkened background */
+    position: fixed;
+    z-index: -1; /* Behind everything */
+    transition: background-image 0.5s ease-in-out; /* Smooth transition for background image change */
 }
 
+/* Player container */
 .player {
-    background-color: rgba(155, 167, 226, 0.9);
+    background: linear-gradient(to bottom, rgba(24, 24, 24, 0.95), rgba(36, 36, 36, 0.95)); /* Dark gradient background */
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    height: 650px;
-    width: 900px;
-    border-radius: 25px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    height: 1000px; /* Increased height */
+    width: 600px; /* Decreased width */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow */
     overflow: hidden;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-
-
+/* Top section with album art */
 .row1 {
     height: 40%;
     width: 100%;
-    background-image: url("https://c8.alamy.com/comp/JHWAND/background-of-digital-music-player-with-ear-phones-lying-on-the-wooden-JHWAND.jpg");
     background-size: cover;
-    background-position-y: 13%;
+    background-position: center;
+    position: relative;
+    transition: background-image 0.5s ease-in-out; /* Smooth transition for album art change */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+.row1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)); /* Gradient overlay for better readability */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* Song information section */
+.songInfo {
+    height: 15%; /* Increased height */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background for text readability */
+    transition: background-color 0.3s ease-in-out;
+}
+
+.songInfo:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .songTitle {
-    height: 10%;
-    width: 100%;
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 24px;
     color: #FFFFFF;
-    background-color: rgba(72, 69, 75, 0.8);
-    transition: background-color 0.3s ease-in-out;
-
 }
 
-.songTitle:hover {
-    background-color: rgba(72, 69, 75, 0.9);
+.singer {
+    font-size: 18px;
+    color: #BBBBBB;
+    margin-top: 5px;
 }
 
+/* Bottom section */
 .row2 {
-    height: 50%;
+    height: 45%; /* Adjusted height */
     width: 100%;
-    background-color: rgba(72, 69, 75, 0.6);
-}
-
-.play {
-    height: 20%;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    background-color: #181818; /* Dark background */
+}
+
+/* Play controls */
+.play {
     display: flex;
+    justify-content: space-around;
+    width: 50%;
 }
 
 .play img {
-    height: 35px;
-    width: 35px;
-    background-size: cover;
-    margin-top: 20px;
+    height: 50px;
+    width: 50px;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
 }
@@ -87,81 +116,64 @@ body {
     transform: scale(1.2);
 }
 
+/* Seek bar */
 .seek-bar {
-    height: 40%;
-    width: 100%;
+    width: 80%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    margin-top: 20px;
+    cursor: pointer; /* Make seek bar interactive */
 }
 
 .handle {
-    height: 5px;
-    width: 80%;
-    background: linear-gradient(to right, #6f4dff 0%, #24e5e5 50%, #6f4dff 100%);
-    border-radius: 25px;
+    width: 100%;
+    height: 4px;
+    background: #404040; /* Darker seek bar */
+    border-radius: 2px;
+    position: relative;
 }
 
 .fill {
-    height: 8px;
-    width: 8px;
-    border-radius: 50%;
-    background-color: #24e5e5;
-    z-index: 999;
-    margin-top: -1.5px;
-    margin-left: -1.5px;
+    height: 100%;
+    background-color: #1DB954; /* Spotify green */
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.1s linear; /* Smooth fill animation */
 }
 
+/* Mute controls and current time */
 .mute {
-    height: 40%;
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .currentTime {
-    width: 50%;
-    height: 100%;
-    margin-left: 35px;
-    margin-top: -25px;
-    color: purple;
+    font-size: 14px;
 }
 
 .muteButtons {
-    width: 50%;
-    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    /* margin-right: 10px; */
-}
-.muteButtons img {
-    height: 40px; /* Increase size of muteButtons */
-    width: 40px; /* Increase size of muteButtons */
-    margin: 0 10px; /* Add margin between buttons */
 }
 
-#decrease,
-#mute,
-#increase {
+.muteButtons img {
     height: 25px;
     width: 25px;
-    background-size: cover;
-    margin: 5px;
-    filter: brightness(0.8);
-}
-#increase{
-    height: 32px;
-    width: 32px;
+    margin: 0 10px;
+    cursor: pointer;
+    filter: invert(1); /* Inverting colors for dark mode */
+    transition: filter 0.3s ease-in-out;
 }
 
-
-#decrease:hover,
-#mute:hover,
-#increase:hover {
-    filter: brightness(1);
+.muteButtons img:hover {
+    filter: invert(0.7);
 }
 
-
-
+#decrease, #mute, #increase {
+    width: 25px;
+    height: 25px;
+}
