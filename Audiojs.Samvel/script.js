@@ -267,5 +267,39 @@ function convertTime(seconds) {
     totalTime(Math.round(song.duration));
 }
 
+let isRepeated = false;
+
+function repeat() {
+    isRepeated = !isRepeated;
+    if (isRepeated) {
+        song.currentTime = 0; // Reset the current time to start
+    }
+}
+
+
+song.addEventListener("ended", function () {
+    if (isRepeated) {
+        song.currentTime = 0;
+        song.play();
+    } else {
+        next();
+    }
+});
+
+
+function changeSequence() {
+    for (let i = data.title.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [data.title[i], data.title[j]] = [data.title[j], data.title[i]];
+        [data.singer[i], data.singer[j]] = [data.singer[j], data.singer[i]];
+        [data.song[i], data.song[j]] = [data.song[j], data.song[i]];
+        [data.poster[i], data.poster[j]] = [data.poster[j], data.poster[i]];
+    }
+    playSong();
+    song.play();
+    document.getElementById("play").src = "Photos/pause.png";
+}
+
+
 
 //
